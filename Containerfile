@@ -1,15 +1,20 @@
-FROM docker.io/ubuntu:latest
+ARG SOURCE_DISTRO
+ARG SOURCE_TAG
+ARG BUILD_VERSION
 
-ARG OS_RELEASE
-ARG VERSION
+FROM docker.io/${SOURCE_DISTRO}:${SOURCE_TAG}
+
+ARG SOURCE_DISTRO
+ARG SOURCE_TAG
+ARG BUILD_VERSION
 
 LABEL org.opencontainers.image.title="TFTP container"
 LABEL org.opencontainers.image.description="TFTP running in a container."
 LABEL org.opencontainers.image.ref.name="learningtopi/tftpd"
-LABEL org.opencontainers.image.version="$VERSION"
+LABEL org.opencontainers.image.version="${BUILD_VERSION}"
 LABEL org.opencontainers.image.source="https://github.com/LearningToPi/tftpd_docker"
 LABEL org.opencontainers.image.vendor="LearningToPi.com"
-LABEL org.opencontainers.image.base.name="docker.io/ubuntu:$OS_RELEASE"
+LABEL org.opencontainers.image.base.name="docker.io/${SOURCE_DISTRO}:${SOURCE_TAG}"
 LABEL org.opencontainers.image.documentation="/README.md"
 
 # install tftpd
